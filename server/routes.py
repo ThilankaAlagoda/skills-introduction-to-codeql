@@ -19,8 +19,8 @@ def index():
 
     elif author:
         cursor.execute(
-            "SELECT * FROM books WHERE author LIKE %s", author
-
+            "SELECT * FROM books WHERE author LIKE ?",
+            (f"%{author}%",)
         )
         books = [Book(*row) for row in cursor]
 
